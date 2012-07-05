@@ -6,11 +6,6 @@
    metadata-complete="true"
    version="2.4">
     <display-name>Struts performance</display-name>
-
-	<context-param>
-		<param-name> org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
-    	<param-value>/WEB-INF/tiles.xml</param-value>
-	</context-param>
 	
 	<filter>
 		<filter-name>charsetFilter</filter-name>
@@ -64,10 +59,6 @@
 	<listener>
 		<listener-class>
 			org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>
-	
-	<listener>
-  		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
 	</listener>
 		
 </web-app>
