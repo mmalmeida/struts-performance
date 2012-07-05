@@ -5,7 +5,7 @@
    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd"
    metadata-complete="true"
    version="2.4">
-    <display-name>Clinical Trial Data Management</display-name>
+    <display-name>Struts performance</display-name>
 
 	<context-param>
 		<param-name> org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
