@@ -11,12 +11,14 @@
 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
 		
-		
-		<action name="hellomenu" method="menu" class="at.almeida.strutsPerformance.actions.HelloAction" >
-		<
+		<action name="*">
 			<result>index.jsp</result>
 		</action>
 		
+
+	<action name="menu" method="quickmenu" class="at.almeida.BookAction">
+	<interceptor-ref name="basicStack" />
+	</action>
 
 	</package>
 

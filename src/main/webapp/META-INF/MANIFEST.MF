@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
 Built-By: malmeida
 Build-Jdk: 1.6.0_26
+Implementation-Title: strutsPerformance
+Implementation-Version: 1.0.2-SNAPSHOT
+Implementation-Vendor-Id: at.almeida
 Created-By: Maven Integration for Eclipse
+Implementation-Build: 
 

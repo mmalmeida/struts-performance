@@ -1,4 +1,4 @@
-package at.almeida.strutsPerformance.model;
+package at.almeida;
 
 public class Chapter extends BookComponent{
 

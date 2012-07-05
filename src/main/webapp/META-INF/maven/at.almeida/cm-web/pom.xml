@@ -4,16 +4,22 @@
 	<modelVersion>4.0.0</modelVersion>
 		<groupId>at.almeida</groupId>
 		<version>1.0.2-SNAPSHOT</version>
-	<artifactId>strutsPerformance</artifactId>
+	<artifactId>cm-web</artifactId>
 	<packaging>war</packaging>
 
 	<properties>
+		<hibernate.version>3.6.7.Final</hibernate.version>
 		<struts.version>2.3.1.1</struts.version>
+		<postgresql.version>9.1-901-1.jdbc4</postgresql.version>
 		<spring.version>3.1.0.RELEASE</spring.version>
 		<slf4j.version>1.5.11</slf4j.version>
+		<excel.version>2.6.10</excel.version>
+		<freemarker.version>2.3.9</freemarker.version>
 	</properties>
-	
+
+
 	<dependencies>
+
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-json-plugin</artifactId>
@@ -96,11 +102,24 @@
 		</dependency>
             
 		<dependency>
+			<groupId>freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${freemarker.version}</version>
+		</dependency>
+
+
+		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-tiles-plugin</artifactId>
 			<version>${struts.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
+		</dependency>
+		<!-- AOP dependency -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2</version>
 		</dependency>
 
 		<dependency>
@@ -138,6 +157,7 @@
 							<Implementation-Build>${buildNumber}</Implementation-Build>
 						</manifestEntries>
 					</archive>
+					<warName>clinicalmanagement</warName>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -147,13 +167,41 @@
 				<configuration>
 					<webAppConfig>
 						<contextPath>/</contextPath>
+						<jettyEnvXml>${basedir}/src/main/resources/jetty/jetty-env.xml
+						</jettyEnvXml>
 					</webAppConfig>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
+
+					<systemProperties>
+						<systemProperty>
+							<name>my.env</name>
+							<value>DEV</value>
+						</systemProperty>
+					</systemProperties>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>postgresql</groupId>
+						<artifactId>postgresql</artifactId>
+						<version>${postgresql.version}</version>
+						<type>jar</type>
+					</dependency>
+					<dependency>
+						<groupId>c3p0</groupId>
+						<artifactId>c3p0</artifactId>
+						<version>0.9.1.2</version>
+						<type>jar</type>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/acceptance/InDevelopment_Tests.java</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
